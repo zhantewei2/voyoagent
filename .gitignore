@@ -1,0 +1,25 @@
+# 凭证与本地配置
+.env
+.mcp.json
+.claude/settings*.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# 运行产物
+logs/
+runtime/
+
+# 前端
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db

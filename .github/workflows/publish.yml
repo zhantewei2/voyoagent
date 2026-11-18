@@ -1,0 +1,36 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      # PyPI Trusted Publishing（OIDC），无需在 GitHub 配置任何 token
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Build distributions
+        run: uv build
+
+      - name: Verify tag matches package version
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          BUILT="$(basename dist/*.tar.gz)"
+          if [ "$BUILT" != "voyoagent-${TAG_VERSION}.tar.gz" ]; then
+            echo "::error::tag ${GITHUB_REF_NAME} 与构建产物 $BUILT 不一致，请核对 voyoagent/__init__.py 的 __version__"
+            exit 1
+          fi
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

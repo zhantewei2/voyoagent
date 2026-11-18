@@ -1,0 +1,73 @@
+:root {
+  color-scheme: light;
+
+  --color-bg: oklch(0.982 0.006 195);
+  --color-surface: oklch(0.998 0.002 195);
+  --color-surface-subtle: oklch(0.965 0.009 195);
+  --color-sidebar-bg: oklch(0.976 0.008 195);
+  --color-primary: oklch(0.49 0.095 190);
+  --color-primary-hover: oklch(0.55 0.1 190);
+  --color-primary-pressed: oklch(0.43 0.085 190);
+  --color-primary-soft: oklch(0.95 0.025 190);
+  --color-primary-soft-hover: oklch(0.91 0.04 190);
+  --color-info: var(--color-primary);
+  --color-danger: oklch(0.52 0.17 25);
+  --color-danger-soft: oklch(0.95 0.025 25);
+  --color-success: oklch(0.5 0.11 150);
+  --color-text: oklch(0.25 0.025 210);
+  --color-text-secondary: oklch(0.45 0.025 210);
+  --color-border: oklch(0.88 0.014 195);
+  --color-border-light: oklch(0.935 0.009 195);
+  --color-border-strong: oklch(0.78 0.02 195);
+  --color-code-bg: oklch(0.965 0.009 195);
+  --color-active-bg: var(--color-primary-soft);
+  --color-on-primary: oklch(0.985 0.003 195);
+  --color-icon-muted: oklch(0.59 0.025 210);
+  --color-focus: var(--color-primary);
+  --color-overlay: oklch(0.2 0.02 210 / 0.38);
+
+  --bubble-user-bg: var(--color-primary-soft);
+  --bubble-user-text: var(--color-text);
+
+  --shadow-xs: 0 1px 2px oklch(0.25 0.025 210 / 0.035);
+  --shadow-sm: 0 2px 8px oklch(0.25 0.025 210 / 0.06), 0 12px 28px oklch(0.25 0.025 210 / 0.04);
+  --shadow-lg: 0 8px 24px oklch(0.25 0.025 210 / 0.1), 0 24px 64px oklch(0.25 0.025 210 / 0.08);
+
+  --radius-card: 12px;
+  --radius-lg: 10px;
+  --radius-md: 8px;
+  --radius-sm: 6px;
+  --radius-pill: 999px;
+
+  --space-2xs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 40px;
+
+  --font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-base: 1.6;
+  --line-height-prose: 1.75;
+
+  --topbar-height: 56px;
+  --sidebar-width: 216px;
+  --page-padding: 28px;
+  --page-max-width: 1280px;
+  --detail-max-width: 1600px;
+  --content-reading-width: 72ch;
+
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

@@ -1,0 +1,57 @@
+[project]
+name = "voyoagent"
+dynamic = ["version"]
+description = "基于 OpenAI Responses API 的极简异步 Agent 框架：流式事件、工具注册、Skill 加载、MCP 接入、提示词 fragment 与生命周期钩子"
+readme = "README.md"
+requires-python = ">=3.13"
+authors = [{ name = "zhantewei" }]
+keywords = ["agent", "llm", "mcp", "skill", "openai", "asyncio"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "aiofiles>=25.1.0",
+    "mcp>=2.3.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0",
+    "pydantic-settings>=2.16.1",
+    "voyolib>=0.4.0",
+]
+
+[dependency-groups]
+# 仓库本地开发用：管理平台 server/、tests_server/、tests_skill/ 与 main.py 示例的依赖，
+# 不进入 voyoagent 发布包
+dev = [
+    "asgi-lifespan>=2.1.0",
+    "deepagents>=0.7.28",
+    "fastapi>=0.156.4",
+    "httpx>=0.28.1",
+    "langchain-anthropic>=1.7.6",
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.4.1",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "voyoagent/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["voyoagent"]
+# test.py 是仓库内手动联调脚本（读 .env、sys.path hack），不随包发布
+exclude = ["voyoagent/test.py"]
+
+[tool.hatch.build.targets.sdist]
+# 只带包源码与 README，排除 server/ frontend/ tests_server/ tests_skill/ main.py 等
+include = ["/voyoagent", "/README.md"]
+exclude = ["voyoagent/test.py"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
