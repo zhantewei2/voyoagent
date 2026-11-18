@@ -1,4 +1,4 @@
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 from voyoagent.agent import Voyo_Agent
 from voyoagent.yo_agent import Yo_Agent, BUILTIN_TOOLS

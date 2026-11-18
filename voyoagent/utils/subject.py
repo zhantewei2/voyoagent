@@ -11,11 +11,11 @@ class Subject[T]:
         for sub in self.subs:
             sub(i)
 
-    def subscribe(self,fn: callable[T,None])->callable[None]:
+    def subscribe(self,fn: Callable[[T], None])->Callable[[], None]:
         self.subs.append(fn)
         return self.build_unsubscribe(fn)
 
-    def build_unsubscribe(self,fn)->callable[None]:
+    def build_unsubscribe(self,fn)->Callable[[], None]:
         def unsubscribe():
             self.subs.remove(fn)
 
@@ -32,11 +32,11 @@ class ASubject[T]:
             if inspect.isawaitable(r):
                 await r
 
-    def subscribe(self,fn: callable[T,None]|callable[T,Awaitable[None]])->callable[None]:
+    def subscribe(self,fn: Callable[[T], None]|Callable[[T], Awaitable[None]])->Callable[[], None]:
         self.subs.append(fn)
         return self.build_unsubscribe(fn)
 
-    def build_unsubscribe(self,fn)->callable[None]:
+    def build_unsubscribe(self,fn)->Callable[[], None]:
         def unsubscribe():
             self.subs.remove(fn)
         return unsubscribe
