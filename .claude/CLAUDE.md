@@ -74,6 +74,11 @@ server/
 - `.env`、`.mcp.json`、`.claude/settings*.json` 不入库（.gitignore 已排除）；新增含凭证的文件同样不入库。
 - 提交/发布前自查：grep 真实密钥格式（`sk-`、长 hex token、明文连接串），命中即删。
 
+### 版本与发布
+
+- 包版本唯一来源是 `voyoagent/__init__.py` 的 `__version__`（pyproject.toml 动态读取，不要在 pyproject.toml 里写静态 version）。
+- 发版流程：先改 `__version__`，再打 `v{version}` 格式的 git tag（如 `v0.1.0`），tag 必须与 `__version__` 严格一致，push tag 触发 GitHub Actions 发布 PyPI。
+
 ### 界面视觉规范
 
 - 颜色参差：标题/标签用深色 `var(--color-text)` 加粗，正文常规色，`--color-text-secondary` 只给辅助小字（hint、时间戳、注释性内容）；禁止大片灰平铺。
